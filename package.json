@@ -21,5 +21,9 @@
   "homepage": "https://github.com/tommasobonomo/vertical-innovation2018#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "jest": "^23.6.0"
   }
 }
