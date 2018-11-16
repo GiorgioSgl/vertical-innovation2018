@@ -1,0 +1,25 @@
+{
+  "name": "back-and-forth",
+  "version": "0.0.1",
+  "description": "Back&Forth tries to solve the commute problem, offering multiple choices to a user rewarding him for eco-sustainable behaviours with discounts for local shops",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tommasobonomo/vertical-innovation2018.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tommasobonomo/vertical-innovation2018/issues"
+  },
+  "homepage": "https://github.com/tommasobonomo/vertical-innovation2018#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
