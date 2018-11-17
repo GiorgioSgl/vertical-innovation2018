@@ -28,7 +28,6 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
     "jest": "^23.6.0"
   }
 }
