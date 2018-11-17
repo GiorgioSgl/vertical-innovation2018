@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const { URL, URLSearchParams } = require('url');
 
 // Should be in format {lat, lng}
-exports.getWeatherInfo = async (start, finish) => {
+exports.getWeatherInfo = async (location) => {
 
     const hostname = 'http://tourism.opendatahub.bz.it';
 
@@ -47,29 +47,19 @@ exports.getWeatherInfo = async (start, finish) => {
         };
     });
 
-    let closestStart;
-    let distanceStart = Number.MAX_SAFE_INTEGER;
-    let closestFinish;
-    let distanceFinish = Number.MAX_SAFE_INTEGER;
+    let closest;
+    let distance = Number.MAX_SAFE_INTEGER;
     cities_with_location_and_temp.forEach(location => {
-        let minStart = getDistanceFromLatLonInKm(location.lat, location.lng, start.lat, start.lng);
-        if (distanceStart > minStart) {
-            closestStart = location;
-            distanceStart = minStart;
-        }
-        let minFinish = getDistanceFromLatLonInKm(location.lat, location.lng, finish.lat, finish.lng);
-        if (distanceFinish > minFinish) {
-            closestFinish = location;
-            distanceFinish = minFinish;
+        let min = getDistanceFromLatLonInKm(location.lat, location.lng, location.lat, location.lng);
+        if (distance > min) {
+            closest = location;
+            distance = min;
         }
     });
 
-    const avgTemp = (parseFloat(closestStart.temp) + parseFloat(closestFinish.temp)) / 2;
-    const avgPrec = (parseFloat(closestStart.precipitations) + parseFloat(closestFinish.precipitations)) / 2;
-
     return {
-        avgTemp,
-        avgPrec
+        temperature: closest.temp,
+        precipitation: closest.precipitations
     };
 };
 
