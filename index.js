@@ -1,13 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-
 const weather = require('./weather');
 const geocoding = require('./graphhopper_geocoding');
 const routing = require('./graphhopper_routing');
-const points = require('./points');
+const express = require('express');
 
 const app = express();
-const jsonParser = bodyParser.json();
 const port = 8000;
 
 app.post('/points', jsonParser, async (req, res) => {
