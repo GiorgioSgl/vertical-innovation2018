@@ -1,6 +1,7 @@
 var write = require('./write')
 var update = require('./update')
+var read = require('./read')
 
-
-update(72026318,"ciaassao",1111,1111);
-write("gilsdoaijoorgio",1111,1111);
+read(70676890).then(console.log);
+update(70676890,"giorgiosd",12132,123123)
+write("giorgdsdsio",1231,13231)

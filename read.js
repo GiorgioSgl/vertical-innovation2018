@@ -1,0 +1,45 @@
+var firebase = require("firebase");
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyACjIddUpfYchJn934vlhXH9p5DF5AjVl0",
+    authDomain: "goats-d209f.firebaseapp.com",
+    databaseURL: "https://goats-d209f.firebaseio.com",
+    projectId: "goats-d209f",
+    storageBucket: "goats-d209f.appspot.com",
+    messagingSenderId: "897936732069"
+};
+
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(config);
+
+}
+
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+module.exports = function(userId){
+    
+    return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        var nome = snapshot.val().nome;  
+        var lastTime = snapshot.val().lastTime;
+        var points = snapshot.val().points;
+
+        obj = {
+            nome: nome,
+            lastTime: lastTime,
+            points: points
+        };
+
+        return JSON.stringify(obj);
+    });
+    
+}
+
+
+
+
+
+

@@ -22,9 +22,9 @@ function getRandomInt(max) {
 
 module.exports = function   ( username,time,points) {
     var database = firebase.database();  
-    console.log("ciao");
+    
     userId = getRandomInt(1000000000);
-    console.log(userId);
+    
 
     firebase.database().ref('users/'+userId).set({
       nome: username,
