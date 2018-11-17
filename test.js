@@ -1,3 +1,6 @@
-var db = require('./firebaseDB')
+var write = require('./write')
+var update = require('./update')
 
-db.updateUserData(864026819,"giorgio",1111,1111);
+
+update(72026318,"ciaassao",1111,1111);
+write("gilsdoaijoorgio",1111,1111);

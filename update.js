@@ -1,6 +1,5 @@
 var firebase = require("firebase");
 
-firebase.app().delete(firebase.app());
 
 // Initialize Firebase
 var config = {
@@ -11,33 +10,19 @@ var config = {
     storageBucket: "goats-d209f.appspot.com",
     messagingSenderId: "897936732069"
 };
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
+
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(config);
+
 }
+
 
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
 
-module.exports = function   ( username,time,points) {
-    var database = firebase.database();  
-    console.log("ciao");
-    userId = getRandomInt(1000000000);
-    console.log(userId);
-
-    firebase.database().ref('users/'+userId).set({
-      nome: username,
-      lastTime: time,
-      points: points
-    }).then(function(value) {
-      database.goOffline();
-    });
-
-    
-}
-
-function updateUserData(uid, username,time, points) {
+module.exports = function updateUserData(uid, username,time, points) {
   var database = firebase.database();
   console.log("ciao");
   firebase.database().ref('users/' + uid).set({
