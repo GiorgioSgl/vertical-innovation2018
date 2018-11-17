@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/tommasobonomo/vertical-innovation2018#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "firebase": "^5.5.8"
   },
   "devDependencies": {
     "eslint": "^5.9.0",
