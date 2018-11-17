@@ -10,10 +10,6 @@ const app = express();
 const jsonParser = bodyParser.json();
 const port = 8000;
 
-app.get('/', (req, res) => {
-    res.send('Helloooo');
-});
-
 app.post('/points', jsonParser, async (req, res) => {
     const location = req.body.location;
 
@@ -22,8 +18,6 @@ app.post('/points', jsonParser, async (req, res) => {
 
     let info = await weather.getWeatherInfo(location);
 
-    // const p = location.precipitation;
-    // const t = location.temperature;
     const p = parseFloat(info.precipitation);
     const t = parseFloat(info.temperature);
 
