@@ -24,12 +24,12 @@ app.post('/points', jsonParser, async (req, res) => {
 
     // const p = location.precipitation;
     // const t = location.temperature;
-    // const p = parseFloat(location.precipitation);
-    // const t = parseFloat(location.temperature);
+    const p = parseFloat(info.precipitation);
+    const t = parseFloat(info.temperature);
 
-    console.log(points.calculatePoints());
-
-    res.send(info);
+    res.send({
+        points: points.calculatePoints(p, t)
+    });
 });
 
 app.listen(port, () => { console.log(`Back&Forth listening on port ${port}`); });

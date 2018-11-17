@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/tommasobonomo/vertical-innovation2018#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "graphhopper-js-api-client": "^0.10.0",
     "node-fetch": "^2.3.0"
