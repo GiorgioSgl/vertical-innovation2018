@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 const port = 8000;
 
-
+app.use(cors());
 
 function simulateTraffic() {
     var sec = (new Date().getTime() / 1000) % 40;
