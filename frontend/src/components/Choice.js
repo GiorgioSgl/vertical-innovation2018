@@ -37,22 +37,22 @@ class Choice extends Component {
         const api_body = {
             location: {
                 lat: this.state.lat,
-                lng: this.state.lng
+                lng: this.state.lng,
+                name: this.state.choiceName
             }
         };
 
         const api_path = '/points';
-        const points = await fetch(hostname + api_path, {
+        const pointAnswer = await fetch(hostname + api_path, {
             method: 'post',
             body: JSON.stringify(api_body),
             headers: { 'Content-Type': 'application/json' },
         })
-            .then(res => res.json().points);
+            .then(res => res.json());
 
-        // console.log(`Got points! ${points}`);
+        pointAnswer.points = pointAnswer.points / 100;
 
-
-        this.setState({ points });
+        this.setState({ points: pointAnswer.points });
     }
 
     render() {
@@ -112,7 +112,7 @@ class Choice extends Component {
                         <div className="card-body">
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item display-5">{this.state.choiceDescription}</li>
-                                <li className="list-group-item "><h4> DA PRENDERE OGNI 5 SECONDI <img src="images/punto.png" alt="" /> /5s</h4></li>
+                                <li className="list-group-item "><h4> {this.state.points} <img src="images/punto.png" alt="" /> /5s</h4></li>
                                 <li className="list-group-item display-5">What do you choose?</li>
                             </ul>
                             <div className="card-footer border-info">

@@ -19,6 +19,9 @@ function simulateTraffic() {
 
 app.post('/points', bodyParser.json(), async (req, res) => {
     const location = req.body.location;
+    const name = req.body.name;
+
+    // Make a switch case for name
 
     // const traffic; // TODO: invent random traffic
     // const timeLastTime; // TODO: get time from database
@@ -33,4 +36,4 @@ app.post('/points', bodyParser.json(), async (req, res) => {
     });
 });
 
-app.listen(port, () => { console.log(`Back&Forth listening on port ${port}`); });
+app.listen(port, () => { console.log(`Back&Forth listening on port ${port}`); }); choi
