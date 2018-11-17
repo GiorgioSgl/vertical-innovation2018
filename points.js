@@ -9,10 +9,11 @@ var pWalk = 50;
 var timePassed;
 
 var UsingBike = false;
-var UsingCarSharing = true;
 var UsingBus = false;
 var UsingWalk = false;
 var UsingElectricCar = false;
+
+var UsingCarSharing = true;
 var Driver = false;
 
 var traffic;
