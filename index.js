@@ -4,9 +4,13 @@ const routing = require('./graphhopper_routing');
 const express = require('express');
 const points = require('./points');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 
 const app = express();
 const port = 8000;
+
+app.use(cors);
 
 
 function simulateTraffic() {

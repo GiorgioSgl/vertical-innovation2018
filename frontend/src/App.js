@@ -8,22 +8,6 @@ import Choice from './components/Choice';
 
 class App extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    //     navigator.geolocation.getCurrentPosition(position => {
-    //         this.setState({
-    //             latitude: position.coords.latitude,
-    //             longitude: position.coords.longitude
-    //         });
-    //     });
-    //     this.state = {
-    //         coord: {
-    //             latitude: '',
-    //             longitude: ''
-    //         }
-    //     };
-    // }
-
     render() {
         return (
             <div>
