@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 const { URL, URLSearchParams } = require('url');
 
+// Should be in format {lat, lng}
 exports.getWeatherInfo = async (start, finish) => {
 
     const hostname = 'http://tourism.opendatahub.bz.it';
@@ -28,8 +29,6 @@ exports.getWeatherInfo = async (start, finish) => {
     };
     url.search = new URLSearchParams(params);
 
-    // console.log(url);
-
     const weather = await fetch(url.href, {
         method: 'get',
         headers: {
@@ -43,9 +42,51 @@ exports.getWeatherInfo = async (start, finish) => {
             name: entry.name,
             lat: entry.latitude,
             lng: entry.longitude,
-            temp: entry.t
+            temp: entry.t,
+            precipitations: entry.n
         };
     });
 
-    return cities_with_location_and_temp;
+    let closestStart;
+    let distanceStart = Number.MAX_SAFE_INTEGER;
+    let closestFinish;
+    let distanceFinish = Number.MAX_SAFE_INTEGER;
+    cities_with_location_and_temp.forEach(location => {
+        let minStart = getDistanceFromLatLonInKm(location.lat, location.lng, start.lat, start.lng);
+        if (distanceStart > minStart) {
+            closestStart = location;
+            distanceStart = minStart;
+        }
+        let minFinish = getDistanceFromLatLonInKm(location.lat, location.lng, finish.lat, finish.lng);
+        if (distanceFinish > minFinish) {
+            closestFinish = location;
+            distanceFinish = minFinish;
+        }
+    });
+
+    const avgTemp = (parseFloat(closestStart.temp) + parseFloat(closestFinish.temp)) / 2;
+    const avgPrec = (parseFloat(closestStart.precipitations) + parseFloat(closestFinish.precipitations)) / 2;
+
+    return {
+        avgTemp,
+        avgPrec
+    };
 };
+
+const getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+    const R = 6371; // Radius of the earth in km
+    const dLat = deg2rad(lat2 - lat1);  // deg2rad below
+    const dLon = deg2rad(lon2 - lon1);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
+        ;
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c; // Distance in km
+    return d;
+};
+
+function deg2rad(deg) {
+    return deg * (Math.PI / 180);
+}

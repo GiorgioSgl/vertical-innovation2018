@@ -1,7 +1,7 @@
 const GraphHopperRouting = require('graphhopper-js-api-client/src/GraphHopperRouting');
 const GHInput = require('graphhopper-js-api-client/src/GHInput');
 
-// Points should be in format [{lat1,lng1}, {lat2,lng2}, ...]
+// Points should be in format [{lat: lat1, lng: lng1}, {lat: lat2, lng: lng2}, ...]
 exports.getRouteFromPoints = points => {
     const key = '9744bd41-6a3a-42ee-8a30-1166c2f0d75a';
     const profile = 'car';
